@@ -14,7 +14,7 @@ public class HelperBase {
 	public static void reader(){
 		try (BufferedReader reader = new BufferedReader(
 	            new InputStreamReader(
-	                    new FileInputStream("C:\\Helper\\words.txt")))){
+	                    new FileInputStream("C:\\LearningAssistant\\words.txt")))){
 	        String line;
 	        while ((line = reader.readLine()) != null) {
 	            words.add(line);
@@ -30,16 +30,37 @@ public class HelperBase {
 	//public static HelperBase Returner = new HelperBase();
 	private static String str1;
 	private static String str2;
+	static int count = 0; 
 	public static class Returner {
-		public static void retWord(){ 
-			Random randomGenerator = new Random();
-			int randomInt = randomGenerator.nextInt(HelperBase.words.size());
-			String str[] = (words.get(randomInt)).split("-");
-			str1 = str[0];
-			str2 = str[1];
+		public static void retWord(boolean radioCheck){
+			if (radioCheck) {
+				Random randomGenerator = new Random();
+				int randomInt = randomGenerator.nextInt(HelperBase.words.size());
+				String str[] = (words.get(randomInt)).split("-");
+				str1 = str[0];
+				str2 = str[1];
+				str2 = str2.substring(1);
+			} else {
+				int serialInt = HelperBase.words.size();
+				if (count != serialInt){
+					String str[] = (words.get(count)).split("-");
+					str1 = str[0];
+					str2 = str[1];
+					str2 = str2.substring(1);
+					count++;
+				} else {
+					count = 0;
+					String str[] = (words.get(count)).split("-");
+					str1 = str[0];
+					str2 = str[1];
+					str2 = str2.substring(1);
+					count++;
+				}
+			}
 		}
 		
 		public static String wordOne(){
+			
 			return str1;
 		}
 		
