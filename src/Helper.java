@@ -11,9 +11,9 @@ public class Helper{
 				//HelperBase base = new HelperBase();
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
-				frame.setBounds(320, 320, 320, 320);
+				frame.setBounds(320, 320, 380, 380);
 				//frame.setResizable(false);
-				frame.setTitle("Words learning helper");
+				frame.setTitle("Words Learning Assistant");
 			}
 		});
 	}

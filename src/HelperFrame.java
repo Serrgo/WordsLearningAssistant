@@ -24,8 +24,8 @@ class HelperFrame extends JFrame {
 		JLabel labelTranslate = new JLabel("Translate:");
 		JButton nextWord = new JButton("Next Word");
 		JButton checkWord = new JButton("Check Word");
-		JTextArea firstWord = new JTextArea(5, 30);
-		JTextArea secondWord = new JTextArea(5, 30);
+		JTextArea firstWord = new JTextArea();
+		JTextArea secondWord = new JTextArea();
 		JRadioButton changeOutRand = new JRadioButton("Random",true);
 		JRadioButton changeOutSerial = new JRadioButton("Serial");
 		
@@ -34,7 +34,7 @@ class HelperFrame extends JFrame {
 		group.add(changeOutSerial);
 	
 		add(labelWord,BorderLayout.WEST);
-		labelWord.setSize(40, 15);
+		labelWord.setSize(60, 15);
 		labelWord.setLocation(10,10);
     
 		add(labelTranslate,BorderLayout.WEST);
@@ -50,13 +50,13 @@ class HelperFrame extends JFrame {
 		changeOutSerial.setLocation(10,85);
     
 		add(firstWord,BorderLayout.NORTH);
-		firstWord.setSize(220,20);
+		firstWord.setSize(280,20);
 		firstWord.setLocation(75, 10);
 		firstWord.setEditable(false);
 		firstWord.setFont(font);
 		
 		add(secondWord,BorderLayout.NORTH);
-		secondWord.setSize(220,20);
+		secondWord.setSize(280,20);
 		secondWord.setLocation(75, 35);
 		secondWord.setEditable(false);
 		secondWord.setFont(font);

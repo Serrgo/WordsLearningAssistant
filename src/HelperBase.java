@@ -60,7 +60,6 @@ public class HelperBase {
 		}
 		
 		public static String wordOne(){
-			
 			return str1;
 		}
 		
