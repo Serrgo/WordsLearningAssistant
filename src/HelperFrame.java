@@ -24,6 +24,7 @@ class HelperFrame extends JFrame {
 		JLabel labelTranslate = new JLabel("Translate:");
 		JButton nextWord = new JButton("Next Word");
 		JButton checkWord = new JButton("Check Word");
+		JButton preWord = new JButton("Pre Word");
 		JTextArea firstWord = new JTextArea();
 		JTextArea secondWord = new JTextArea();
 		JRadioButton changeOutRand = new JRadioButton("Random",true);
@@ -69,6 +70,10 @@ class HelperFrame extends JFrame {
 		nextWord.setSize(100,20);
 		nextWord.setLocation(145, 90);
 		
+		add(preWord,BorderLayout.SOUTH);
+		preWord.setSize(100,20);
+		preWord.setLocation(145, 115);
+		
 		//Buttons
 		
 		checkWord.addActionListener(new ActionListener() {
@@ -84,10 +89,22 @@ class HelperFrame extends JFrame {
             	boolean radioState;
             	if (changeOutRand.isSelected()) radioState=true;
             		else  radioState=false;
-            	HelperBase.Returner.retWord(radioState);
+            	HelperBase.Returner.retNextWord(radioState);
             	firstWord.setText(HelperBase.Returner.wordOne());
             	secondWord.setText("");
             }
-        });		  	
+        });
+		
+		preWord.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	boolean radioState;
+            	if (changeOutRand.isSelected()) radioState=true;
+            		else  radioState=false;
+            	HelperBase.Returner.retPreWord(radioState);
+            	firstWord.setText(HelperBase.Returner.wordOne());
+            	secondWord.setText("");
+            }
+        });
 	}
 }

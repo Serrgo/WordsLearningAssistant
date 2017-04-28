@@ -30,9 +30,9 @@ public class HelperBase {
 	//public static HelperBase Returner = new HelperBase();
 	private static String str1;
 	private static String str2;
-	static int count = 0; 
+	static int count = -1; 
 	public static class Returner {
-		public static void retWord(boolean radioCheck){
+		public static void retNextWord(boolean radioCheck){
 			if (radioCheck) {
 				Random randomGenerator = new Random();
 				int randomInt = randomGenerator.nextInt(HelperBase.words.size());
@@ -41,20 +41,39 @@ public class HelperBase {
 				str2 = str[1];
 				str2 = str2.substring(1);
 			} else {
-				int serialInt = HelperBase.words.size();
+				int serialInt = HelperBase.words.size()-1;
 				if (count != serialInt){
+					count++;
 					String str[] = (words.get(count)).split("-");
 					str1 = str[0];
 					str2 = str[1];
 					str2 = str2.substring(1);
-					count++;
 				} else {
-					count = 0;
+					count = -1;
+					count++;
 					String str[] = (words.get(count)).split("-");
 					str1 = str[0];
 					str2 = str[1];
 					str2 = str2.substring(1);
-					count++;
+				}
+			}
+		}
+		
+		public static void retPreWord(boolean radioCheck){
+			if (radioCheck==false) {
+				int serialInt = HelperBase.words.size()-1;
+				if (count >0) {
+					count--;
+					String str[] = (words.get(count)).split("-");
+					str1 = str[0];
+					str2 = str[1];
+					str2 = str2.substring(1);
+				} else {
+					count = serialInt;
+					String str[] = (words.get(count)).split("-");
+					str1 = str[0];
+					str2 = str[1];
+					str2 = str2.substring(1);
 				}
 			}
 		}
