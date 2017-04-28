@@ -28,33 +28,37 @@ public class HelperBase {
 	}
 	
 	//public static HelperBase Returner = new HelperBase();
-	private static String str1;
-	private static String str2;
+	private static String firstWord;
+	private static String secondWord;
+	private static Integer counter;
 	static int count = -1; 
 	public static class Returner {
 		public static void retNextWord(boolean radioCheck){
 			if (radioCheck) {
 				Random randomGenerator = new Random();
 				int randomInt = randomGenerator.nextInt(HelperBase.words.size());
-				String str[] = (words.get(randomInt)).split("-");
-				str1 = str[0];
-				str2 = str[1];
-				str2 = str2.substring(1);
+				String primaryString[] = (words.get(randomInt)).split("-");
+				firstWord = primaryString[0];
+				secondWord = primaryString[1];
+				counter = words.indexOf(firstWord+"-"+secondWord)+1;
+				secondWord = secondWord.substring(1);
 			} else {
 				int serialInt = HelperBase.words.size()-1;
 				if (count != serialInt){
 					count++;
-					String str[] = (words.get(count)).split("-");
-					str1 = str[0];
-					str2 = str[1];
-					str2 = str2.substring(1);
+					String primaryString[] = (words.get(count)).split("-");
+					firstWord = primaryString[0];
+					secondWord = primaryString[1];
+					secondWord = secondWord.substring(1);
+					counter = count+1;
 				} else {
 					count = -1;
 					count++;
 					String str[] = (words.get(count)).split("-");
-					str1 = str[0];
-					str2 = str[1];
-					str2 = str2.substring(1);
+					firstWord = str[0];
+					secondWord = str[1];
+					secondWord = secondWord.substring(1);
+					counter = count+1;
 				}
 			}
 		}
@@ -64,26 +68,32 @@ public class HelperBase {
 				int serialInt = HelperBase.words.size()-1;
 				if (count >0) {
 					count--;
-					String str[] = (words.get(count)).split("-");
-					str1 = str[0];
-					str2 = str[1];
-					str2 = str2.substring(1);
+					String primaryString[] = (words.get(count)).split("-");
+					firstWord = primaryString[0];
+					secondWord = primaryString[1];
+					secondWord = secondWord.substring(1);
+					counter = count+1;
 				} else {
 					count = serialInt;
-					String str[] = (words.get(count)).split("-");
-					str1 = str[0];
-					str2 = str[1];
-					str2 = str2.substring(1);
+					String primaryString[] = (words.get(count)).split("-");
+					firstWord = primaryString[0];
+					secondWord = primaryString[1];
+					secondWord = secondWord.substring(1);
+					counter = count+1;
 				}
 			}
 		}
 		
 		public static String wordOne(){
-			return str1;
+			return firstWord;
 		}
 		
 		public static String wordTwo(){
-			return str2;
+			return secondWord;
+		}
+		
+		public static String wordCounter(){
+			return Integer.toString(counter);
 		}
 	}
 }
