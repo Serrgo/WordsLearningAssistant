@@ -23,11 +23,14 @@ class HelperFrame extends JFrame {
 		JLabel labelWord = new JLabel("Word:");
 		JLabel labelCounter = new JLabel("Current word:");
 		JLabel labelTranslate = new JLabel("Translate:");
+		JLabel labelTrue = new JLabel("YOU GODDAMN RIGHT");
+		JLabel labelFalse = new JLabel("TRY AGAIN");
 		JButton nextWord = new JButton("Next Word");
 		JButton checkWord = new JButton("Check Word");
 		JButton preWord = new JButton("Pre Word");
 		JTextArea firstWord = new JTextArea();
 		JTextArea secondWord = new JTextArea();
+		//JScrollPane scrollPane = new JScrollPane(firstWord);
 		JTextArea currentWord = new JTextArea();
 		JRadioButton changeOutRand = new JRadioButton("Random",true);
 		JRadioButton changeOutSerial = new JRadioButton("Serial");
@@ -48,6 +51,16 @@ class HelperFrame extends JFrame {
 		labelCounter.setSize(120,20);
 		labelCounter.setLocation(235,65);
 		
+		add(labelTrue,BorderLayout.WEST);
+		labelTrue.setSize(140, 15);
+		labelTrue.setLocation(360,35);
+		labelTrue.setVisible(false);
+		
+		add(labelFalse,BorderLayout.WEST);
+		labelFalse.setSize(60, 15);
+		labelFalse.setLocation(360,35);
+		labelFalse.setVisible(false);
+		
 		add(changeOutRand,BorderLayout.WEST);
 		changeOutRand.setSize(72, 15);
 		changeOutRand.setLocation(10,65);
@@ -65,7 +78,7 @@ class HelperFrame extends JFrame {
 		add(secondWord,BorderLayout.NORTH);
 		secondWord.setSize(280,20);
 		secondWord.setLocation(75, 35);
-		secondWord.setEditable(false);
+		secondWord.setEditable(true);
 		secondWord.setFont(font);
 		
 		add(currentWord,BorderLayout.NORTH);
@@ -85,12 +98,19 @@ class HelperFrame extends JFrame {
 		add(preWord,BorderLayout.SOUTH);
 		preWord.setSize(100,20);
 		preWord.setLocation(105, 115);
-		
+				
 		//Buttons
 		
 		checkWord.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	if (secondWord.getText().equals(HelperBase.Returner.wordTwo())){
+            		labelTrue.setVisible(true);
+            		labelFalse.setVisible(false);
+            	} else{
+            		labelTrue.setVisible(false);
+            		labelFalse.setVisible(true);
+            	}
                 secondWord.setText(HelperBase.Returner.wordTwo());
             }
         });		
@@ -98,6 +118,8 @@ class HelperFrame extends JFrame {
 		nextWord.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	labelTrue.setVisible(false);
+            	labelFalse.setVisible(false);
             	boolean radioState;
             	if (changeOutRand.isSelected()) radioState=true;
             		else  radioState=false;
@@ -111,6 +133,8 @@ class HelperFrame extends JFrame {
 		preWord.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	labelTrue.setVisible(false);
+            	labelFalse.setVisible(false);
             	boolean radioState;
             	if (changeOutRand.isSelected()) radioState=true;
             		else  radioState=false;
